@@ -1,0 +1,22 @@
+body {
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+}
+.main {
+  h1 {
+    text-align: center;
+  }
+}
+table {
+  border-collapse: collapse;
+  margin: auto;
+  td,
+  th {
+    border: 1px solid rgb(210, 210, 210);
+    text-align: left;
+    padding: 8px;
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+}
