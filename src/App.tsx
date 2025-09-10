@@ -1,10 +1,13 @@
 import "./App.scss";
 import Table from "./components/table";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
     <>
-      <Table />
+      <ThemeProvider>
+        <Table />
+      </ThemeProvider>
     </>
   );
 }
