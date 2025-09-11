@@ -4,17 +4,19 @@ import ReduxExercise from "./components/ReduxExercise";
 import Table from "./components/table";
 import { ThemeProvider } from "./context/ThemeContext";
 import { store } from "./store";
+import Todo from "./components/Todo";
 
 function App() {
   return (
     <>
-      <Provider store={store}>
+      <Todo />
+      {/* <Provider store={store}>
         <ReduxExercise />
       </Provider>
 
       <ThemeProvider>
         <Table />
-      </ThemeProvider>
+      </ThemeProvider> */}
     </>
   );
 }
