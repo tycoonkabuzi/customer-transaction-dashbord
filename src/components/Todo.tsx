@@ -1,15 +1,24 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Todo = () => {
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState(() => {
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  });
   const refInput = useRef(null);
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todo));
+  }, [todo]);
   const saveTodo = (e) => {
     e.preventDefault();
     setTodo((prev) => [...prev, refInput.current.value.trim()]);
   };
 
-  console.log(todo);
+  const deleteTodo = (toBeDeleted) => {
+    const newFiltered = todo.filter((element) => element !== todo[toBeDeleted]);
+    setTodo(newFiltered);
+  };
   return (
     <div className="main-todo">
       <h1>Todo</h1>
@@ -21,7 +30,8 @@ const Todo = () => {
         <ul>
           {todo.map((oneTodo, index) => (
             <li key={index}>
-              {oneTodo} <button>delete</button>
+              {oneTodo}
+              <button onClick={() => deleteTodo(index)}>delete</button>
             </li>
           ))}
         </ul>
